@@ -1,0 +1,60 @@
+Twitter Json(617 KB):
+==========================================================================================
+Pre-loading payload via mmap from: ../benchmarks/json-files/twitter.json
+2026-06-30T16:45:39+02:00
+Running ./minify_benchmark
+Run on (16 X 4199.91 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x8)
+  L1 Instruction 32 KiB (x8)
+  L2 Unified 1024 KiB (x8)
+  L3 Unified 98304 KiB (x1)
+Load Average: 0.12, 0.11, 0.04
+-----------------------------------------------------------------------------
+Benchmark                   Time             CPU   Iterations UserCounters...
+-----------------------------------------------------------------------------
+SIMD_Minify           1140551 ns      1108802 ns          641 bytes_per_second=543.162Mi/s
+SIMD_Minify_Nibble    1163437 ns      1130012 ns          631 bytes_per_second=532.966Mi/s
+Linux_JQ_Minify       9582979 ns      9307975 ns           76 bytes_per_second=64.7035Mi/s
+===========================================================================================
+
+Catalog Json(1.6 MB):
+==========================================================================================
+Pre-loading payload via mmap from: ../benchmarks/json-files/catalog.json
+2026-06-30T16:48:11+02:00
+Running ./minify_benchmark
+Run on (16 X 4199.91 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x8)
+  L1 Instruction 32 KiB (x8)
+  L2 Unified 1024 KiB (x8)
+  L3 Unified 98304 KiB (x1)
+Load Average: 0.01, 0.06, 0.03
+-----------------------------------------------------------------------------
+Benchmark                   Time             CPU   Iterations UserCounters...
+-----------------------------------------------------------------------------
+SIMD_Minify           3129176 ns      3047291 ns          229 bytes_per_second=540.542Mi/s
+SIMD_Minify_Nibble    3116660 ns      3035075 ns          230 bytes_per_second=542.718Mi/s
+Linux_JQ_Minify      15179730 ns     14781041 ns           48 bytes_per_second=111.439Mi/s
+===========================================================================================
+
+Big Json(1.1 GB):
+==========================================================================================
+Pre-loading payload via mmap from: ../benchmarks/json-files/gigantic_test.json
+2026-06-30T16:49:17+02:00
+Running ./minify_benchmark
+Run on (16 X 4199.91 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x8)
+  L1 Instruction 32 KiB (x8)
+  L2 Unified 1024 KiB (x8)
+  L3 Unified 98304 KiB (x1)
+Load Average: 0.14, 0.09, 0.04
+-----------------------------------------------------------------------------
+Benchmark                   Time             CPU   Iterations UserCounters...
+-----------------------------------------------------------------------------
+SIMD_Minify        3480598838 ns   3388029901 ns            1 bytes_per_second=335.968Mi/s
+SIMD_Minify_Nibble 2381501227 ns   2317611669 ns            1 bytes_per_second=491.14Mi/s
+Linux_JQ_Minify    2.4035e+10 ns   2.3380e+10 ns            1 bytes_per_second=48.6851Mi/s
+===========================================================================================
+

@@ -54,24 +54,27 @@ std::string simd_minify_json(std::string json_input) {
 
     for (; i < len; ++i) {
         char c = json_input[i];
-        if (escaped) {
-            escaped = false;
+        
+        if (inside_string) {
             *output_ptr++ = c;
-        } else if (c == '\\') {
-            escaped = true;
-            *output_ptr++ = c;
-        } else if (c == '"') {
-            inside_string = !inside_string;
-            *output_ptr++ = c;
+            if (escaped) {
+                escaped = false;
+            } else if (c == '\\') {
+                escaped = true;
+            } else if (c == '"') {
+                inside_string = false;
+            }
         } else {
-            if (inside_string) {
+            if (c == '"') {
+                inside_string = true;
+                escaped = false;
                 *output_ptr++ = c;
-            } else if (c != 0x20 && c != 0x09 && c != 0x0A && c != 0x0D) {
+            } else if (c != 0x20 && c != 0x09 && c != 0x0A && c != 0x0D && c != '\0') {
                 *output_ptr++ = c;
             }
         }
     }
-
-    output.resize(output_ptr - output.data());
+    size_t final_written_len = output_ptr - output.data();
+    output.resize(final_written_len);
     return output;
 }

@@ -1,4 +1,5 @@
 #include "simd_minify.h"
+#include "simd_minify_nibble.h"
 #include <iostream>
 #include <string>
 
@@ -15,7 +16,11 @@ int main() {
                             "}";
 
     std::cout << "Raw Document Input:\n" << test_json << "\n\n";
+
     std::string minified = simd_minify_json(test_json);
-    std::cout << "Resulting Minified Production Output:\n" << minified << "\n";
+    std::cout << "Resulting Output:\n" << minified << "\n";
+
+    std::string minified_nibble = simd_minify_json_nibble(test_json);
+    std::cout << "Resulting Output(Nibble):\n" << minified_nibble << "\n";
     return 0;
 }
