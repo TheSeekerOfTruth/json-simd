@@ -47,9 +47,10 @@ else()
 endif()
 
 # --- 3. Build Targets ---
-add_executable(simd_minifier 
+add_executable(simd_engine 
     src/simd_minify.cpp
     src/simd_minify_nibble.cpp
+    src/simd_prettify.cpp
     src/main.cpp
 )
 

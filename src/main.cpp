@@ -1,19 +1,20 @@
 #include "simd_minify.h"
 #include "simd_minify_nibble.h"
+#include "simd_prettify.h"
 #include <iostream>
 #include <string>
 
 int main() {
     // Valid representation containing genuine tabs and newlines mapped out
-    std::string test_json = "{\n"
-                            "  \"info\": \"This contains \\t tabs, \\n lines, and an escaped \\\"quote\\\".\",\n"
-                            "  \"array\": [\n"
-                            "    1\t,\n" 
-                            "    2,\n"
+    std::string test_json = "{{{\n"
+                            "  \"info\":                    \"This contains \\t tabs, \\n lines, and an escaped \\\"quote\\\".\",\n"
+                            "  \"array\"                        : [\n"
+                            "    1\t        ,              \n" 
+                            "    2                 ,\n"
                             "    3\n"
-                            "  ],\n"
-                            "  \"clean\": true\n"
-                            "}";
+                            "  ],           \n"
+                            "  \"clean\"     :                true\n"
+                            "}}}";
 
     std::cout << "Raw Document Input:\n" << test_json << "\n\n";
 
@@ -22,5 +23,7 @@ int main() {
 
     std::string minified_nibble = simd_minify_json_nibble(test_json);
     std::cout << "Resulting Output(Nibble):\n" << minified_nibble << "\n";
+
+    std::cout << "Prettification:\n" << simd_prettify_json(test_json, 2) << "\n";
     return 0;
 }
